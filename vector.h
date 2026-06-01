@@ -3,8 +3,8 @@
 
 /* GNU C 23 
  * C LIB
- * TYPE DEFINES
- * VECTOR LIB 
+ * TYPE DEFINES & FUNCTIONS
+ * VECTOR LIB
  */
 
 typedef struct{
@@ -55,13 +55,35 @@ typedef struct{
 	short* data;
 } shortv;
 
-int intv_add(intv* to, int this)
+int intv_add(intv* to, int this, int count)
 {
-	if(to->itemc < to->max)
+	if(to->itemc < to->max && count == to->itemc)
 	{
 		to->data[to->itemc] = this;
 		to->itemc += 1;
 		return 0;
+	}
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(int));
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
 	}
 	else
 	{
@@ -73,13 +95,35 @@ int intv_add(intv* to, int this)
 	}
 }
 
-int longv_add(longv* to, int this)
+int longv_add(longv* to, long this, int count)
 {
-	if(to->itemc < to->max)
+	if(to->itemc < to->max && count == to->itemc)
 	{
 		to->data[to->itemc] = this;
 		to->itemc += 1;
 		return 0;
+	}	
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc-1; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(long));
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
 	}
 	else
 	{
@@ -91,13 +135,35 @@ int longv_add(longv* to, int this)
 	}
 }
 
-int floatv_add(floatv* to, int this)
+int floatv_add(floatv* to, float this, int count)
 {
-	if(to->itemc < to->max)
+	if(to->itemc < to->max && count == to->itemc)
 	{
 		to->data[to->itemc] = this;
 		to->itemc += 1;
 		return 0;
+	}
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(float));
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
 	}
 	else
 	{
@@ -109,13 +175,35 @@ int floatv_add(floatv* to, int this)
 	}
 }
 
-int shortv_add(shortv* to, int this)
+int shortv_add(shortv* to, short this, int count)
 {
-	if(to->itemc < to->max)
+	if(to->itemc < to->max && count == to->itemc)
 	{
 		to->data[to->itemc] = this;
 		to->itemc += 1;
 		return 0;
+	}
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(short));
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
 	}
 	else
 	{
@@ -127,13 +215,36 @@ int shortv_add(shortv* to, int this)
 	}
 }
 
-int llongv_add(llongv* to, int this)
+int llongv_add(llongv* to, long long this, int count)
 {
-	if(to->itemc < to->max)
+	if(to->itemc < to->max && count == to->itemc)
 	{
 		to->data[to->itemc] = this;
 		to->itemc += 1;
 		return 0;
+	}
+	
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(long long));
+		for(int i = to->itemc-1; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
 	}
 	else
 	{
@@ -145,13 +256,35 @@ int llongv_add(llongv* to, int this)
 	}
 }
 
-int ldoublev_add(ldoublev* to, int this)
+int ldoublev_add(ldoublev* to, long double this, int count)
 {
-	if(to->itemc < to->max)
+	if(to->itemc < to->max && count == to->itemc)
 	{
 		to->data[to->itemc] = this;
 		to->itemc += 1;
 		return 0;
+	}
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(long double));
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
 	}
 	else
 	{
@@ -163,13 +296,35 @@ int ldoublev_add(ldoublev* to, int this)
 	}
 }
 
-int charv_add(charv* to, int this)
+int charv_add(charv* to, char this, int count)
 {
-	if(to->itemc < to->max)
+	if(to->itemc < to->max && count == to->itemc)
 	{
 		to->data[to->itemc] = this;
 		to->itemc += 1;
 		return 0;
+	}
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(char));
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
 	}
 	else
 	{
@@ -181,49 +336,90 @@ int charv_add(charv* to, int this)
 	}
 }
 
-int intv_rm(intv* from, int this)
+int doublev_add(doublev* to, double this, int count)
+{
+	if(to->itemc < to->max && count == to->itemc)
+	{
+		to->data[to->itemc] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc < to->max && count != to->itemc)
+	{
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		return 0;
+	}
+	else if(to->itemc == to->max && count != to->itemc)
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(double));
+		for(int i = to->itemc; i > count; i--)
+		{
+			to->data[i] = to->data[i-1];
+		}
+		to->data[count] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
+	}
+	else
+	{
+		to->data = realloc(to->data, to->max * 2 * sizeof(double));
+		to->data[to->itemc] = this;
+		to->itemc += 1;
+		to->max *= 2;
+		return to->max * 2;
+	}
+}
+
+
+void intv_rm(intv* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
 }
 
-int longv_rm(longv* from, int this)
+void longv_rm(longv* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
 }
 
-int llongv_rm(llongv* from, int this)
+void llongv_rm(llongv* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
 }
 
-int floatv_rm(floatv* from, int this)
+void floatv_rm(floatv* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
 }
 
-int doublev_rm(doublev* from, int this)
+void doublev_rm(doublev* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
 }
 
-int ldoublev_rm(ldoublev* from, int this)
+void ldoublev_rm(ldoublev* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
 }
 
-int shortv_rm(shortv* from, int this)
+void shortv_rm(shortv* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
 }
 
-int charv_rm(charv* from, int this)
+void charv_rm(charv* from, int this)
 {
   from->data[this] = 0;
   from->itemc -= 1;
