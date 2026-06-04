@@ -22,10 +22,14 @@ x.max = 2;
 x.itemc = 1;
 x.data = malloc(2 * sizeof(int));
 x.data[0] = 52;
+intv_add(&x, 43, 2);
+intv_add(&x, 21, 1);
+// now x = [52, 21, 43]
+intv_rm(&x, 1);
 // now x = [52, NULL, 43]
 x.data[1] = x.data[2];
 x.data[2] = 0;
 // now x = [52, 43]
 ```
 also there is a v version of all types but long double and long long's have llong ldouble at both v and h so llong(v/h) ldouble(v/h) other than that they are the same like floatv
-- i will make typev_rm(); better later to shift items when some item is removed
+- i will make typev_rm(); better later to shift items when some item is removed and there is a type called strh
