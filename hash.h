@@ -1,5 +1,11 @@
 #pragma once
 
+/* GNU C 23
+ * C LIB
+ * TYPE DEFINES
+ * KEY VALUE PAIRS
+ */
+
 typedef struct{
 	char* key;
 	int val;
