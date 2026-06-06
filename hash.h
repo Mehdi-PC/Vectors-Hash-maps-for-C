@@ -3,7 +3,7 @@
 /* GNU C 23
  * C LIB
  * TYPE DEFINES
- * KEY VALUE PAIRS
+ * KEY VALUE PAIRS LIB
  */
 
 typedef struct{
