@@ -379,48 +379,144 @@ int doublev_add(doublev* to, double this, int count)
 
 void intv_rm(intv* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
 
 void longv_rm(longv* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
 
 void llongv_rm(llongv* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
 
 void floatv_rm(floatv* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
 
 void doublev_rm(doublev* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
 
 void ldoublev_rm(ldoublev* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
 
 void shortv_rm(shortv* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
 
 void charv_rm(charv* from, int this)
 {
-  from->data[this] = 0;
-  from->itemc -= 1;
+	if(this == from->itemc-1)
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+	}
+	else
+	{
+		from->data[this] = 0;
+		from->itemc -= 1;
+		for(int i = this; i < from->max-1; i++)
+		{
+			from->data[i] = from->data[i+1];
+		}
+	}
 }
