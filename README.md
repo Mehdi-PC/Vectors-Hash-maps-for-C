@@ -33,3 +33,26 @@ x.data[2] = 0;
 ```
 also there is a v version of all types but long double and long long's have llong ldouble at both v and h so llong(v/h) ldouble(v/h) other than that they are the same like floatv
 - i will make typev_rm(); better later to shift items when some item is removed and there is a type called strh
+# New features
+- added now removing shifts items!
+**if** we asume your vector file is in /usr/local/include/vector.h this will work
+```c
+#include<stdlib.h>
+#include"vector.h"
+
+int main()
+{
+  intv x;
+  x.itemc = 3;
+  x.max = 4;
+  x.data = malloc(4 * sizeof(int));
+  x.data[0] = 10;
+  x.data[1] = 20;
+  x.data[2] = 40;
+  // its now x = [10, 20, 40]
+  intv_rm(&x, 1);
+  // its now x = [10, 40]
+  return 0;
+}
+```
+also the vectors data section is any normal array you would have maken with that type on the heap it just gets reallocated so the items behave exacly like if they were in a array so intv x; x.data is a integer pointer and a array is a pointer so its just a integer array that can change in size **Do not try adding items with higher index values than (max-1)×2** because when its full it doubles the size
